@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap');
 
 @tailwind base;
@@ -50,71 +49,49 @@
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-heading;
-  }
-
-  code {
-    @apply font-mono;
-  }
 }
 
 @layer components {
-  .section-heading {
-    @apply text-2xl md:text-3xl font-heading font-semibold relative pb-3 mb-8 inline-block;
+  // Enhanced component styles
+  .button-primary {
+    @apply inline-flex items-center gap-2 px-5 py-3 
+           bg-highlight-DEFAULT text-navy 
+           font-medium rounded-lg 
+           hover:bg-highlight-soft 
+           transition-all duration-300 
+           animate-glow-pulse
+           shadow-lg hover:shadow-xl;
   }
 
-  .section-heading::after {
-    content: '';
-    @apply absolute bottom-0 left-0 w-2/3 h-1 bg-highlight;
+  .section-heading {
+    @apply text-2xl md:text-3xl font-heading font-semibold 
+           relative pb-3 mb-8 inline-block
+           bg-gradient-to-r from-highlight-DEFAULT to-accent-bright 
+           bg-clip-text text-transparent;
   }
 
   .nav-item {
-    @apply relative inline-flex text-slate hover:text-highlight transition-colors duration-300 font-medium text-sm;
+    @apply relative inline-flex 
+           text-slate-light hover:text-highlight-DEFAULT 
+           transition-colors duration-300 
+           font-medium text-sm;
   }
 
-  .nav-item::after {
-    content: '';
-    @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-highlight transition-all duration-300;
-  }
-  
-  .nav-item:hover::after {
-    @apply w-full;
+  .reveal {
+    @apply opacity-0 transform translate-y-10 
+           transition-all duration-700 ease-out;
   }
 
-  .section {
-    @apply py-16 md:py-24 scroll-mt-20;
-  }
-
-  .project-card {
-    @apply bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300;
-  }
-  
-  .tech-pill {
-    @apply px-3 py-1 bg-slate-100 text-navy rounded-full text-sm font-medium;
-  }
-
-  .button-primary {
-    @apply inline-flex items-center gap-2 px-5 py-3 bg-highlight text-navy font-medium rounded hover:bg-opacity-80 transition-all duration-300;
-  }
-
-  .button-outline {
-    @apply inline-flex items-center gap-2 px-5 py-3 border border-highlight text-highlight font-medium rounded hover:bg-highlight/10 transition-all duration-300;
+  .reveal.active {
+    @apply opacity-100 translate-y-0;
   }
 }
 
-.text-balance {
-  text-wrap: balance;
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+// Global styles with modern touch
+.text-gradient {
+  background: linear-gradient(90deg, #64FFDA, #9b87f5, #6E59A5);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  animation: gradient-move 5s ease infinite;
 }

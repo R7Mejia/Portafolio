@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -25,39 +24,6 @@ export default {
 				mono: ['Fira Code', 'monospace'],
 			},
 			colors: {
-				border: 'hsl(var(--border))',
-				input: 'hsl(var(--input))',
-				ring: 'hsl(var(--ring))',
-				background: 'hsl(var(--background))',
-				foreground: 'hsl(var(--foreground))',
-				primary: {
-					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
-				},
-				secondary: {
-					DEFAULT: 'hsl(var(--secondary))',
-					foreground: 'hsl(var(--secondary-foreground))'
-				},
-				destructive: {
-					DEFAULT: 'hsl(var(--destructive))',
-					foreground: 'hsl(var(--destructive-foreground))'
-				},
-				muted: {
-					DEFAULT: 'hsl(var(--muted))',
-					foreground: 'hsl(var(--muted-foreground))'
-				},
-				accent: {
-					DEFAULT: 'hsl(var(--accent))',
-					foreground: 'hsl(var(--accent-foreground))'
-				},
-				popover: {
-					DEFAULT: 'hsl(var(--popover))',
-					foreground: 'hsl(var(--popover-foreground))'
-				},
-				card: {
-					DEFAULT: 'hsl(var(--card))',
-					foreground: 'hsl(var(--card-foreground))'
-				},
 				navy: {
 					DEFAULT: '#0A192F',
 					light: '#112240',
@@ -68,7 +34,19 @@ export default {
 					light: '#A8B2D1',
 					lighter: '#CCD6F6',
 				},
-				highlight: '#64FFDA',
+				highlight: {
+					DEFAULT: '#64FFDA',
+					soft: '#7E69AB',
+					deep: '#6E59A5',
+				},
+				background: {
+					DEFAULT: '#F4F6F9',
+					dark: '#1A1F2C',
+				},
+				accent: {
+					soft: '#D6BCFA',
+					bright: '#9b87f5',
+				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -97,6 +75,19 @@ export default {
 				},
 				blink: {
 					'50%': { opacity: '0' }
+				},
+				glowPulse: {
+					'0%, 100%': { 
+						boxShadow: '0 0 5px rgba(100, 255, 218, 0.3)' 
+					},
+					'50%': { 
+						boxShadow: '0 0 20px rgba(100, 255, 218, 0.6)' 
+					}
+				},
+				gradientMove: {
+					'0%': { backgroundPosition: '0% 50%' },
+					'50%': { backgroundPosition: '100% 50%' },
+					'100%': { backgroundPosition: '0% 50%' }
 				}
 			},
 			animation: {
@@ -105,7 +96,14 @@ export default {
 				'fade-in': 'fadeIn 0.5s ease-out forwards',
 				'fade-in-slide': 'fadeInSlide 0.7s ease-out forwards',
 				'typewriter': 'typewriter 2s steps(14) forwards',
-				'blink': 'blink 0.7s infinite'
+				'blink': 'blink 0.7s infinite',
+				'glow-pulse': 'glowPulse 2s ease-in-out infinite',
+				'gradient-move': 'gradientMove 5s ease infinite'
+			},
+			backgroundImage: {
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+				'gradient-conic':
+					'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
 			}
 		}
 	},
