@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap');
 
 @tailwind base;
@@ -52,7 +53,7 @@
 }
 
 @layer components {
-  // Enhanced component styles
+  /* Enhanced component styles */
   .button-primary {
     @apply inline-flex items-center gap-2 px-5 py-3 
            bg-highlight-DEFAULT text-navy 
@@ -87,7 +88,7 @@
   }
 }
 
-// Global styles with modern touch
+/* Global styles with modern touch */
 .text-gradient {
   background: linear-gradient(90deg, #64FFDA, #9b87f5, #6E59A5);
   background-size: 200% auto;
