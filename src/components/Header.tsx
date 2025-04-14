@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Code } from 'lucide-react';
 
 const navItems = [
   { label: 'Home', href: '#home' },
@@ -34,16 +34,17 @@ const Header = () => {
       <div className="container">
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <a href="#home" style={{ 
-            fontFamily: 'Poppins, sans-serif',
+            fontFamily: 'JetBrains Mono, monospace',
             fontWeight: 'bold',
             fontSize: '1.25rem',
-            color: 'var(--navy)',
+            color: 'var(--foreground)',
             display: 'flex',
             alignItems: 'center'
           }}>
-            <span style={{ color: 'var(--highlight)', marginRight: '4px' }}>{'{' }</span>
+            <Code size={22} style={{ color: 'var(--highlight)', marginRight: '8px' }} />
+            <span style={{ color: 'var(--highlight)', marginRight: '4px' }}>{'<'}</span>
             <span>Dev</span>
-            <span style={{ color: 'var(--highlight)', marginLeft: '4px' }}>{'}'}</span>
+            <span style={{ color: 'var(--highlight)', marginLeft: '4px' }}>{'>'}</span>
           </a>
           
           {/* Desktop Navigation */}
@@ -58,7 +59,9 @@ const Header = () => {
                   document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' });
                 }}
               >
-                <span style={{ color: 'var(--highlight)', marginRight: '4px' }}>{index + 1}.</span> {item.label}
+                <span style={{ color: 'var(--highlight)', marginRight: '4px', fontFamily: 'JetBrains Mono, monospace' }}>
+                  {`0${index + 1}.`}
+                </span> {item.label}
               </a>
             ))}
             <a 
@@ -77,7 +80,7 @@ const Header = () => {
             style={{ 
               background: 'none',
               border: 'none',
-              color: 'var(--navy)',
+              color: 'var(--foreground)',
               cursor: 'pointer',
               padding: '0.5rem'
             }}
@@ -92,15 +95,16 @@ const Header = () => {
       {/* Mobile Navigation */}
       {isMenuOpen && (
         <nav style={{
-          background: 'white',
-          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+          background: 'var(--navy-light)',
+          boxShadow: '0 10px 30px -10px rgba(0,0,0,0.5)',
           position: 'fixed',
           inset: '0',
           zIndex: '50',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          backdropFilter: 'blur(8px)'
         }} className="mobile-nav">
           <button 
             style={{
@@ -109,7 +113,7 @@ const Header = () => {
               right: '1.25rem',
               background: 'none',
               border: 'none',
-              color: 'var(--navy)',
+              color: 'var(--foreground)',
               cursor: 'pointer',
               padding: '0.5rem'
             }}
@@ -135,7 +139,13 @@ const Header = () => {
                   setIsMenuOpen(false);
                 }}
               >
-                <span style={{ color: 'var(--highlight)', marginRight: '4px' }}>{index + 1}.</span> {item.label}
+                <span style={{ 
+                  color: 'var(--highlight)', 
+                  marginRight: '8px', 
+                  fontFamily: 'JetBrains Mono, monospace' 
+                }}>
+                  {`0${index + 1}.`}
+                </span> {item.label}
               </a>
             ))}
             <a 

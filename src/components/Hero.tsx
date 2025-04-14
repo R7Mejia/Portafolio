@@ -8,25 +8,25 @@ const Hero = () => {
         <div style={{ maxWidth: '48rem' }}>
           <p style={{
             color: 'var(--highlight)',
-            fontFamily: 'Fira Code, monospace',
+            fontFamily: 'JetBrains Mono, monospace',
             marginBottom: '1.25rem',
             opacity: '0',
             animation: 'fadeIn 0.5s ease-out forwards',
             animationDelay: '0.2s'
           }}>
-            Hi, my name is
+            <span className="code-font">{">"}</span> Hi, my name is
           </p>
           <h1 style={{
             fontSize: 'clamp(2.5rem, 5vw, 3.75rem)',
             fontFamily: 'Poppins, sans-serif',
             fontWeight: 'bold',
-            color: 'var(--navy)',
+            color: 'var(--foreground)',
             marginBottom: '1rem',
             opacity: '0',
             animation: 'fadeIn 0.5s ease-out forwards',
             animationDelay: '0.4s'
           }}>
-            <span style={{ display: 'block' }}>Your Name.</span>
+            <span style={{ display: 'block' }} className="typing-effect">Your Name.</span>
             <span style={{ 
               display: 'block', 
               color: 'var(--slate)', 
@@ -58,7 +58,7 @@ const Hero = () => {
                 document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              Check out my work
+              <span className="code-font">{"</"}</span> Check out my work <span className="code-font">{">"}</span>
             </a>
           </div>
         </div>
