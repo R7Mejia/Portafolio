@@ -3,21 +3,53 @@ import { ArrowDown } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section id="home" className="min-h-screen flex flex-col justify-center pt-20 pb-10 relative">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="max-w-3xl">
-          <p className="text-highlight font-mono mb-5 animate-fade-in opacity-0" style={{ animationDelay: '0.2s' }}>
+    <section id="home" className="hero">
+      <div className="container">
+        <div style={{ maxWidth: '48rem' }}>
+          <p style={{
+            color: 'var(--highlight)',
+            fontFamily: 'Fira Code, monospace',
+            marginBottom: '1.25rem',
+            opacity: '0',
+            animation: 'fadeIn 0.5s ease-out forwards',
+            animationDelay: '0.2s'
+          }}>
             Hi, my name is
           </p>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-navy mb-4 animate-fade-in opacity-0" style={{ animationDelay: '0.4s' }}>
-            <span className="text-balance block">Your Name.</span>
-            <span className="text-slate text-balance block mt-2">I build things for the web.</span>
+          <h1 style={{
+            fontSize: 'clamp(2.5rem, 5vw, 3.75rem)',
+            fontFamily: 'Poppins, sans-serif',
+            fontWeight: 'bold',
+            color: 'var(--navy)',
+            marginBottom: '1rem',
+            opacity: '0',
+            animation: 'fadeIn 0.5s ease-out forwards',
+            animationDelay: '0.4s'
+          }}>
+            <span style={{ display: 'block' }}>Your Name.</span>
+            <span style={{ 
+              display: 'block', 
+              color: 'var(--slate)', 
+              marginTop: '0.5rem' 
+            }}>I build things for the web.</span>
           </h1>
-          <p className="text-slate-light text-lg md:text-xl max-w-xl mb-8 animate-fade-in opacity-0" style={{ animationDelay: '0.6s' }}>
+          <p style={{
+            color: 'var(--slate-light)',
+            fontSize: 'clamp(1rem, 3vw, 1.25rem)',
+            maxWidth: '36rem',
+            marginBottom: '2rem',
+            opacity: '0',
+            animation: 'fadeIn 0.5s ease-out forwards',
+            animationDelay: '0.6s'
+          }}>
             I'm a software developer specializing in building exceptional digital experiences. 
             Currently, I'm focused on creating accessible, human-centered products.
           </p>
-          <div className="animate-fade-in opacity-0" style={{ animationDelay: '0.8s' }}>
+          <div style={{
+            opacity: '0',
+            animation: 'fadeIn 0.5s ease-out forwards',
+            animationDelay: '0.8s'
+          }}>
             <a 
               href="#projects" 
               className="button-primary"
@@ -32,7 +64,13 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div style={{
+        position: 'absolute',
+        bottom: '2rem',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        animation: 'bounce 2s infinite'
+      }}>
         <a 
           href="#about" 
           onClick={(e) => {
@@ -40,8 +78,14 @@ const Hero = () => {
             document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
           }}
           aria-label="Scroll down"
+          style={{
+            color: 'var(--highlight)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
         >
-          <ArrowDown className="text-highlight" size={24} />
+          <ArrowDown size={24} />
         </a>
       </div>
     </section>

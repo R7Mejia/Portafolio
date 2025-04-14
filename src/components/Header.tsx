@@ -1,7 +1,6 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { cn } from '@/lib/utils';
 
 const navItems = [
   { label: 'Home', href: '#home' },
@@ -31,82 +30,120 @@ const Header = () => {
   }, []);
 
   return (
-    <header 
-      className={cn(
-        'fixed top-0 w-full z-50 transition-all duration-300',
-        isScrolled ? 'bg-white/80 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'
-      )}
-    >
-      <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-        <a href="#home" className="font-heading font-bold text-xl text-navy flex items-center">
-          <span className="text-highlight mr-1">{'{' }</span>
-          <span>Dev</span>
-          <span className="text-highlight ml-1">{'}'}</span>
-        </a>
-        
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          {navItems.map((item, index) => (
-            <a 
-              key={index} 
-              href={item.href}
-              className="nav-item"
-              onClick={(e) => {
-                e.preventDefault();
-                document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              <span className="text-highlight mr-1">{index + 1}.</span> {item.label}
-            </a>
-          ))}
-          <a 
-            href="/resume.pdf" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="button-outline"
-          >
-            Resume
+    <header className={isScrolled ? 'scrolled' : ''}>
+      <div className="container">
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <a href="#home" style={{ 
+            fontFamily: 'Poppins, sans-serif',
+            fontWeight: 'bold',
+            fontSize: '1.25rem',
+            color: 'var(--navy)',
+            display: 'flex',
+            alignItems: 'center'
+          }}>
+            <span style={{ color: 'var(--highlight)', marginRight: '4px' }}>{'{' }</span>
+            <span>Dev</span>
+            <span style={{ color: 'var(--highlight)', marginLeft: '4px' }}>{'}'}</span>
           </a>
-        </nav>
-
-        {/* Mobile Menu Button */}
-        <button 
-          className="md:hidden text-navy" 
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-
-      {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <nav className="md:hidden bg-white shadow-lg fixed inset-0 z-50 flex flex-col items-center justify-center">
-          <button 
-            className="absolute top-5 right-5 text-navy" 
-            onClick={() => setIsMenuOpen(false)}
-          >
-            <X size={24} />
-          </button>
-          <div className="flex flex-col items-center space-y-6">
+          
+          {/* Desktop Navigation */}
+          <nav style={{ display: 'none', alignItems: 'center', gap: '2rem' }} className="desktop-nav">
             {navItems.map((item, index) => (
               <a 
                 key={index} 
                 href={item.href}
-                className="nav-item text-lg"
+                className="nav-item"
                 onClick={(e) => {
                   e.preventDefault();
                   document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' });
-                  setIsMenuOpen(false);
                 }}
               >
-                <span className="text-highlight mr-1">{index + 1}.</span> {item.label}
+                <span style={{ color: 'var(--highlight)', marginRight: '4px' }}>{index + 1}.</span> {item.label}
               </a>
             ))}
             <a 
               href="/resume.pdf" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="button-outline mt-4"
+              className="button-primary"
+              style={{ fontSize: '0.875rem', padding: '0.5rem 1rem' }}
+            >
+              Resume
+            </a>
+          </nav>
+
+          {/* Mobile Menu Button */}
+          <button 
+            style={{ 
+              background: 'none',
+              border: 'none',
+              color: 'var(--navy)',
+              cursor: 'pointer',
+              padding: '0.5rem'
+            }}
+            className="mobile-menu-button"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Navigation */}
+      {isMenuOpen && (
+        <nav style={{
+          background: 'white',
+          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+          position: 'fixed',
+          inset: '0',
+          zIndex: '50',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }} className="mobile-nav">
+          <button 
+            style={{
+              position: 'absolute',
+              top: '1.25rem',
+              right: '1.25rem',
+              background: 'none',
+              border: 'none',
+              color: 'var(--navy)',
+              cursor: 'pointer',
+              padding: '0.5rem'
+            }}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            <X size={24} />
+          </button>
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '1.5rem'
+          }}>
+            {navItems.map((item, index) => (
+              <a 
+                key={index} 
+                href={item.href}
+                className="nav-item"
+                style={{ fontSize: '1.125rem' }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' });
+                  setIsMenuOpen(false);
+                }}
+              >
+                <span style={{ color: 'var(--highlight)', marginRight: '4px' }}>{index + 1}.</span> {item.label}
+              </a>
+            ))}
+            <a 
+              href="/resume.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="button-primary"
+              style={{ marginTop: '1rem' }}
             >
               Resume
             </a>
