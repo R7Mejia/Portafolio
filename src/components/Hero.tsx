@@ -1,46 +1,53 @@
 
 import { ArrowDown } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Hero = () => {
+  const isMobile = useIsMobile();
+  
   return (
     <section id="home" className="hero">
       <div className="container">
-        <div style={{ maxWidth: '48rem' }}>
+        <div style={{ maxWidth: isMobile ? '100%' : '48rem' }}>
           <p style={{
             color: 'var(--highlight)',
             fontFamily: 'JetBrains Mono, monospace',
-            marginBottom: '1.25rem',
+            marginBottom: isMobile ? '0.75rem' : '1.25rem',
             opacity: '0',
             animation: 'fadeIn 0.5s ease-out forwards',
-            animationDelay: '0.2s'
+            animationDelay: '0.2s',
+            fontSize: isMobile ? '0.9rem' : '1rem'
           }}>
             <span className="code-font">{">"}</span> Hi, my name is
           </p>
           <h1 style={{
-            fontSize: 'clamp(2.5rem, 5vw, 3.75rem)',
+            fontSize: 'clamp(2rem, 8vw, 3.75rem)',
             fontFamily: 'Poppins, sans-serif',
             fontWeight: 'bold',
             color: 'var(--foreground)',
-            marginBottom: '1rem',
+            marginBottom: isMobile ? '0.75rem' : '1rem',
             opacity: '0',
             animation: 'fadeIn 0.5s ease-out forwards',
-            animationDelay: '0.4s'
+            animationDelay: '0.4s',
+            lineHeight: isMobile ? '1.2' : '1.3'
           }}>
             <span style={{ display: 'block' }} className="typing-effect">Your Name.</span>
             <span style={{ 
               display: 'block', 
               color: 'var(--slate)', 
-              marginTop: '0.5rem' 
+              marginTop: isMobile ? '0.3rem' : '0.5rem',
+              fontSize: isMobile ? 'clamp(1.25rem, 6vw, 1.75rem)' : 'clamp(1.5rem, 5vw, 2.25rem)'
             }}>I build things for the web.</span>
           </h1>
           <p style={{
             color: 'var(--slate-light)',
-            fontSize: 'clamp(1rem, 3vw, 1.25rem)',
-            maxWidth: '36rem',
-            marginBottom: '2rem',
+            fontSize: isMobile ? '0.95rem' : 'clamp(1rem, 3vw, 1.25rem)',
+            maxWidth: isMobile ? '100%' : '36rem',
+            marginBottom: isMobile ? '1.5rem' : '2rem',
             opacity: '0',
             animation: 'fadeIn 0.5s ease-out forwards',
-            animationDelay: '0.6s'
+            animationDelay: '0.6s',
+            lineHeight: '1.6'
           }}>
             I'm a software developer specializing in building exceptional digital experiences. 
             Currently, I'm focused on creating accessible, human-centered products.
@@ -66,7 +73,7 @@ const Hero = () => {
 
       <div style={{
         position: 'absolute',
-        bottom: '2rem',
+        bottom: isMobile ? '1.5rem' : '2rem',
         left: '50%',
         transform: 'translateX(-50%)',
         animation: 'bounce 2s infinite'
@@ -85,7 +92,7 @@ const Hero = () => {
             justifyContent: 'center'
           }}
         >
-          <ArrowDown size={24} />
+          <ArrowDown size={isMobile ? 20 : 24} />
         </a>
       </div>
     </section>

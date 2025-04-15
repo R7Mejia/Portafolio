@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Code } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const navItems = [
   { label: 'Home', href: '#home' },
@@ -13,6 +14,7 @@ const navItems = [
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,19 +31,23 @@ const Header = () => {
     };
   }, []);
 
+  const handleNavClick = (href: string) => {
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <header className={isScrolled ? 'scrolled' : ''}>
       <div className="container">
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: isMobile ? '0.75rem 0' : '1rem 0' }}>
           <a href="#home" style={{ 
             fontFamily: 'JetBrains Mono, monospace',
             fontWeight: 'bold',
-            fontSize: '1.25rem',
+            fontSize: isMobile ? '1.1rem' : '1.25rem',
             color: 'var(--foreground)',
             display: 'flex',
             alignItems: 'center'
           }}>
-            <Code size={22} style={{ color: 'var(--highlight)', marginRight: '8px' }} />
+            <Code size={isMobile ? 18 : 22} style={{ color: 'var(--highlight)', marginRight: '8px' }} />
             <span style={{ color: 'var(--highlight)', marginRight: '4px' }}>{'<'}</span>
             <span>Dev</span>
             <span style={{ color: 'var(--highlight)', marginLeft: '4px' }}>{'>'}</span>
@@ -56,7 +62,7 @@ const Header = () => {
                 className="nav-item"
                 onClick={(e) => {
                   e.preventDefault();
-                  document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' });
+                  handleNavClick(item.href);
                 }}
               >
                 <span style={{ color: 'var(--highlight)', marginRight: '4px', fontFamily: 'JetBrains Mono, monospace' }}>
@@ -88,33 +94,37 @@ const Header = () => {
                 }}
                 className="mobile-menu-button"
               >
-                <Menu size={24} />
+                <Menu size={22} />
               </button>
             </SheetTrigger>
-            <SheetContent side="right" className="bg-[var(--navy)] border-[var(--border)] w-[300px] p-0">
+            <SheetContent side="right" className="bg-[var(--navy)] border-[var(--border)] w-[85%] sm:w-[300px] p-0">
               <nav style={{
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
                 height: '100%',
-                padding: '2rem'
-              }}>
+                padding: '1.5rem',
+                gap: '1rem'
+              }} className="mobile-menu-nav">
                 {navItems.map((item, index) => (
                   <a 
                     key={index} 
                     href={item.href}
                     style={{
                       fontSize: '1.125rem',
-                      margin: '1rem 0',
                       color: 'var(--slate-light)',
                       display: 'flex',
                       alignItems: 'center',
-                      gap: '0.5rem'
+                      gap: '0.5rem',
+                      padding: '0.5rem 0',
+                      width: '100%',
+                      justifyContent: 'center',
+                      borderBottom: index !== navItems.length - 1 ? '1px solid var(--navy-lighter)' : 'none'
                     }}
                     onClick={(e) => {
                       e.preventDefault();
-                      document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' });
+                      handleNavClick(item.href);
                     }}
                   >
                     <span style={{ color: 'var(--highlight)', fontFamily: 'JetBrains Mono, monospace' }}>
@@ -127,7 +137,7 @@ const Header = () => {
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="button-primary"
-                  style={{ marginTop: '2rem' }}
+                  style={{ marginTop: '1rem', width: '100%', justifyContent: 'center', textAlign: 'center' }}
                 >
                   Resume
                 </a>
