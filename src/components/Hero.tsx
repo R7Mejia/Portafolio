@@ -31,7 +31,7 @@ const Hero = () => {
             animationDelay: '0.4s',
             lineHeight: isMobile ? '1.2' : '1.3'
           }}>
-            <span style={{ display: 'block' }} className="typing-effect">Your Name.</span>
+            <span style={{ display: 'block' }} className="typing-effect">Roberto Mejia</span>
             <span style={{ 
               display: 'block', 
               color: 'var(--slate)', 
