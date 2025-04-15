@@ -24,7 +24,7 @@ const Footer = () => {
             <span className="code-font"> */</span>
           </p>
           <p style={{ marginTop: '0.5rem', fontSize: '0.75rem' }}>
-            © {new Date().getFullYear()} All Rights Reserved
+            © {new Date().getFullYear()} RMejia | All Rights Reserved
           </p>
         </div>
       </div>
