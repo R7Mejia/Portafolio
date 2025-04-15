@@ -94,7 +94,7 @@ const Skills = () => {
     <section ref={sectionRef} id="skills" className="section bg-navy">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="section-heading text-white reveal">
-          <span className="text-highlight font-mono mr-2">02.</span> Skills
+          <span className="text-highlight font-mono mr-2"></span> Skills
         </h2>
 
         <div className="grid md:grid-cols-3 gap-8">
