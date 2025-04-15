@@ -20,7 +20,7 @@ const Footer = () => {
           </div>
           <p>
             <span className="code-font">/* </span>
-            Designed & Built by <span style={{ color: 'var(--highlight)' }}>Your Name</span>
+            Designed & Built by <span style={{ color: 'var(--highlight)' }}>Roberto Mejia</span>
             <span className="code-font"> */</span>
           </p>
           <p style={{ marginTop: '0.5rem', fontSize: '0.75rem' }}>
