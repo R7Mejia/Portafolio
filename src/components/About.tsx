@@ -38,9 +38,8 @@ const About = () => {
         <div className="grid md:grid-cols-3 gap-8 items-start">
           <div className="md:col-span-2">
             <p className="text-slate mb-4 reveal">
-              Hello! My name is Your Name, and I enjoy creating things that live on the internet. 
-              My interest in web development started back in 2012 when I decided to try editing 
-              custom Tumblr themes — turns out hacking together a custom reblog button taught me a lot about HTML & CSS!
+              Hello! My name is Roberto Mejia, and I enjoy creating things that live on the internet. 
+              My interest in web development started back in 2012 ... about HTML & CSS!
             </p>
             
             <p className="text-slate mb-4 reveal" style={{ transitionDelay: '100ms' }}>
