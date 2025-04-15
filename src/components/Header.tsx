@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X, Code } from 'lucide-react';
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 
 const navItems = [
   { label: 'Home', href: '#home' },
@@ -12,7 +13,6 @@ const navItems = [
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,90 +76,66 @@ const Header = () => {
           </nav>
 
           {/* Mobile Menu Button */}
-          <button 
-            style={{ 
-              background: 'none',
-              border: 'none',
-              color: 'var(--foreground)',
-              cursor: 'pointer',
-              padding: '0.5rem'
-            }}
-            className="mobile-menu-button"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <Sheet>
+            <SheetTrigger asChild>
+              <button 
+                style={{ 
+                  background: 'none',
+                  border: 'none',
+                  color: 'var(--foreground)',
+                  cursor: 'pointer',
+                  padding: '0.5rem'
+                }}
+                className="mobile-menu-button"
+              >
+                <Menu size={24} />
+              </button>
+            </SheetTrigger>
+            <SheetContent side="right" className="bg-[var(--navy)] border-[var(--border)] w-[300px] p-0">
+              <nav style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '100%',
+                padding: '2rem'
+              }}>
+                {navItems.map((item, index) => (
+                  <a 
+                    key={index} 
+                    href={item.href}
+                    style={{
+                      fontSize: '1.125rem',
+                      margin: '1rem 0',
+                      color: 'var(--slate-light)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.5rem'
+                    }}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                  >
+                    <span style={{ color: 'var(--highlight)', fontFamily: 'JetBrains Mono, monospace' }}>
+                      {`0${index + 1}.`}
+                    </span> {item.label}
+                  </a>
+                ))}
+                <a 
+                  href="/resume.pdf" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="button-primary"
+                  style={{ marginTop: '2rem' }}
+                >
+                  Resume
+                </a>
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
-
-      {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <nav style={{
-          background: 'var(--navy-light)',
-          boxShadow: '0 10px 30px -10px rgba(0,0,0,0.5)',
-          position: 'fixed',
-          inset: '0',
-          zIndex: '50',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          backdropFilter: 'blur(8px)'
-        }} className="mobile-nav">
-          <button 
-            style={{
-              position: 'absolute',
-              top: '1.25rem',
-              right: '1.25rem',
-              background: 'none',
-              border: 'none',
-              color: 'var(--foreground)',
-              cursor: 'pointer',
-              padding: '0.5rem'
-            }}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            <X size={24} />
-          </button>
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '1.5rem'
-          }}>
-            {navItems.map((item, index) => (
-              <a 
-                key={index} 
-                href={item.href}
-                className="nav-item"
-                style={{ fontSize: '1.125rem' }}
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' });
-                  setIsMenuOpen(false);
-                }}
-              >
-                <span style={{ 
-                  color: 'var(--highlight)', 
-                  marginRight: '8px', 
-                  fontFamily: 'JetBrains Mono, monospace' 
-                }}>
-                  {`0${index + 1}.`}
-                </span> {item.label}
-              </a>
-            ))}
-            <a 
-              href="/resume.pdf" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="button-primary"
-              style={{ marginTop: '1rem' }}
-            >
-              Resume
-            </a>
-          </div>
-        </nav>
-      )}
     </header>
   );
 };
