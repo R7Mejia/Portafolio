@@ -32,7 +32,7 @@ const About = () => {
     <section ref={sectionRef} id="about" className="section">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="section-heading reveal">
-          <span className="text-highlight font-mono mr-2">01.</span> About Me
+          <span className="text-highlight font-mono mr-2"></span> About Me
         </h2>
         
         <div className="grid md:grid-cols-3 gap-8 items-start">
