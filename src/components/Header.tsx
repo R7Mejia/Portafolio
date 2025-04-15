@@ -1,8 +1,9 @@
 
-import { useState, useEffect } from 'react';
-import { Menu, X, Code } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Menu, X, Code, Upload } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useToast } from "@/components/ui/use-toast";
 
 const navItems = [
   { label: 'Home', href: '#home' },
@@ -15,6 +16,9 @@ const navItems = [
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const isMobile = useIsMobile();
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const { toast } = useToast();
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,7 +37,54 @@ const Header = () => {
 
   const handleNavClick = (href: string) => {
     document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+    setIsOpen(false); // Close mobile menu after clicking
   };
+
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      if (file.type === 'application/pdf') {
+        // Here you would typically handle the file upload
+        // For now, we'll just show a success message
+        toast({
+          title: "Resume uploaded successfully!",
+          description: `File name: ${file.name}`,
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: "Please upload a PDF file",
+          variant: "destructive",
+        });
+      }
+    }
+  };
+
+  const triggerFileUpload = () => {
+    fileInputRef.current?.click();
+  };
+
+  // Hidden file input
+  const fileInput = (
+    <input
+      type="file"
+      ref={fileInputRef}
+      onChange={handleFileUpload}
+      accept=".pdf"
+      style={{ display: 'none' }}
+    />
+  );
+
+  const resumeButton = (
+    <button 
+      onClick={triggerFileUpload}
+      className="button-primary"
+      style={{ fontSize: '0.875rem', padding: '0.5rem 1rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
+    >
+      <Upload size={16} />
+      Upload Resume
+    </button>
+  );
 
   return (
     <header className={isScrolled ? 'scrolled' : ''}>
@@ -70,19 +121,11 @@ const Header = () => {
                 </span> {item.label}
               </a>
             ))}
-            <a 
-              href="/resume.pdf" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="button-primary"
-              style={{ fontSize: '0.875rem', padding: '0.5rem 1rem' }}
-            >
-              Resume
-            </a>
+            {resumeButton}
           </nav>
 
           {/* Mobile Menu Button */}
-          <Sheet>
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <button 
                 style={{ 
@@ -132,18 +175,11 @@ const Header = () => {
                     </span> {item.label}
                   </a>
                 ))}
-                <a 
-                  href="/resume.pdf" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="button-primary"
-                  style={{ marginTop: '1rem', width: '100%', justifyContent: 'center', textAlign: 'center' }}
-                >
-                  Resume
-                </a>
+                {resumeButton}
               </nav>
             </SheetContent>
           </Sheet>
+          {fileInput}
         </div>
       </div>
     </header>
