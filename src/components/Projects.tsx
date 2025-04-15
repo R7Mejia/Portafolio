@@ -65,7 +65,7 @@ const Projects = () => {
     <section ref={sectionRef} id="projects" className="section">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="section-heading reveal">
-          <span className="text-highlight font-mono mr-2">03.</span> Projects
+          <span className="text-highlight font-mono mr-2"></span> Projects
         </h2>
 
         {/* Featured Projects */}
