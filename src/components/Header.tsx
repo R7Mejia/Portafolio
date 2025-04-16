@@ -82,7 +82,7 @@ const Header = () => {
       style={{ fontSize: '0.875rem', padding: '0.5rem 1rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
     >
       <Upload size={16} />
-      Upload Resume
+      Upload Resumè
     </button>
   );
 
