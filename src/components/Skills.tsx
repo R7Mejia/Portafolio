@@ -28,7 +28,6 @@ const skillCategories = [
       { name: "Git", level: 85 },
       { name: "Docker", level: 65 },
       { name: "CI/CD", level: 60 },
-      { name: "AWS", level: 55 },
       { name: "Testing", level: 70 },
     ]
   }
@@ -94,7 +93,8 @@ const Skills = () => {
     <section ref={sectionRef} id="skills" className="section bg-navy">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="section-heading text-white reveal">
-          <span className="text-highlight font-mono mr-2"></span> Skills
+{/*           made a change here */}
+          Skills
         </h2>
 
         <div className="grid md:grid-cols-3 gap-8">
