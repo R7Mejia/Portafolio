@@ -15,7 +15,7 @@ const projects = [
     title: "Another Project",
     description: "A web application showcasing your ability to implement complex features and APIs. Describe the technical challenges you overcame and the impact of your solution.",
     technologies: ["TypeScript", "Next.js", "PostgreSQL"],
-    image: "/placeholder.svg",
+    image: "./assets/imagenes/haloj.jpeg",
     github: "#",
     live: "#",
     featured: true
