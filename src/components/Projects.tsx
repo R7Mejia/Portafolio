@@ -24,7 +24,7 @@ const projects = [
     title: "Side Project",
     description: "A personal project that demonstrates your passion for coding and learning new technologies. Share what you learned and how it improved your skills.",
     technologies: ["Vue.js", "Express", "Firebase"],
-    image: "/assets/", // Updated image path
+    image: "./assets/imagenes/WOLF.png", // Updated image path
     github: "#",
     live: "#",
     featured: false
