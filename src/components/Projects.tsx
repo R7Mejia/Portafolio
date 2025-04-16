@@ -15,7 +15,7 @@ const projects = [
     title: "Another Project",
     description: "A web application showcasing your ability to implement complex features and APIs. Describe the technical challenges you overcame and the impact of your solution.",
     technologies: ["TypeScript", "Next.js"],
-    image: "./assets/imagenes/WOLF.png", // Updated image path
+    image: "./assets/imagenes/dragon.jpg", // Updated image path
     github: "#",
     live: "#",
     featured: true
@@ -24,7 +24,7 @@ const projects = [
     title: "Side Project",
     description: "A personal project that demonstrates your passion for coding and learning new technologies. Share what you learned and how it improved your skills.",
     technologies: ["Vue.js", "Express", "Firebase"],
-    image: "./assets/imagenes/WOLF.png", // Updated image path
+    image: "./assets/imagenes/haloj.jpeg", // Updated image path
     github: "#",
     live: "#",
     featured: false
