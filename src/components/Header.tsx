@@ -140,11 +140,20 @@ const Header = () => {
                   color: 'var(--foreground)',
                   cursor: 'pointer',
                   padding: '0.5rem',
+                  marginLeft: 'auto',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
                   position: 'absolute', // Change to absolute positioning
                   right: '0.5rem', // Align to the right side of the container
                   top: '50%', // Center vertically
                   transform: 'translateY(-50%)', // Ensure vertical centering
                   zIndex: 10 // Ensure it's above other elements
+                  position: 'absolute',
+                  right: '0.5rem',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  zIndex: 10
                 }}
                 className="mobile-menu-button"
               >
@@ -198,4 +207,3 @@ const Header = () => {
 };
 
 export default Header;
-
