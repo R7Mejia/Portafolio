@@ -133,7 +133,8 @@ const Header = () => {
                   border: 'none',
                   color: 'var(--foreground)',
                   cursor: 'pointer',
-                  padding: '0.5rem'
+                  padding: '0.5rem',
+                  marginRight: '0.5rem' // Move it a bit to the left
                 }}
                 className="mobile-menu-button"
               >
