@@ -162,9 +162,8 @@ const Header = () => {
                 gap: '1rem'
               }} className="mobile-menu-nav">
                 {navItems.map((item, index) => (
-                  <a 
-                    key={index} 
-                    href={item.href}
+                  <button 
+                    key={index}
                     style={{
                       fontSize: '1rem',
                       color: 'var(--slate-light)',
@@ -174,17 +173,17 @@ const Header = () => {
                       padding: '0.5rem 0',
                       width: '100%',
                       justifyContent: 'center',
-                      borderBottom: index !== navItems.length - 1 ? '1px solid var(--navy-lighter)' : 'none'
+                      borderBottom: index !== navItems.length - 1 ? '1px solid var(--navy-lighter)' : 'none',
+                      background: 'transparent',
+                      border: 'none',
+                      cursor: 'pointer'
                     }}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick(item.href);
-                    }}
+                    onClick={() => handleNavClick(item.href)}
                   >
                     <span style={{ color: 'var(--highlight)', fontFamily: 'JetBrains Mono, monospace' }}>
                       {`0${index + 1}.`}
                     </span> {item.label}
-                  </a>
+                  </button>
                 ))}
                 {resumeButton}
               </nav>
