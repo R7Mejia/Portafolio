@@ -89,19 +89,25 @@ const Header = () => {
   return (
     <header className={isScrolled ? 'scrolled' : ''}>
       <div className="container">
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: isMobile ? '0.75rem 0' : '1rem 0' }}>
+        <div style={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'space-between', 
+          padding: isMobile ? '0.75rem 0.5rem' : '1rem 0',
+          width: '100%'
+        }}>
           <a href="#home" style={{ 
             fontFamily: 'JetBrains Mono, monospace',
             fontWeight: 'bold',
-            fontSize: isMobile ? '1.1rem' : '1.25rem',
+            fontSize: isMobile ? '1rem' : '1.25rem',
             color: 'var(--foreground)',
             display: 'flex',
             alignItems: 'center'
           }}>
-            <Code size={isMobile ? 18 : 22} style={{ color: 'var(--highlight)', marginRight: '8px' }} />
-            <span style={{ color: 'var(--highlight)', marginRight: '4px' }}>{'<'}</span>
+            <Code size={isMobile ? 16 : 22} style={{ color: 'var(--highlight)', marginRight: '6px' }} />
+            <span style={{ color: 'var(--highlight)', marginRight: '3px' }}>{'<'}</span>
             <span>Dev</span>
-            <span style={{ color: 'var(--highlight)', marginLeft: '4px' }}>{'>'}</span>
+            <span style={{ color: 'var(--highlight)', marginLeft: '3px' }}>{'>'}</span>
           </a>
           
           {/* Desktop Navigation */}
@@ -134,14 +140,17 @@ const Header = () => {
                   color: 'var(--foreground)',
                   cursor: 'pointer',
                   padding: '0.5rem',
-                  marginRight: '0.5rem' // Move it a bit to the left
+                  marginLeft: 'auto',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
                 }}
                 className="mobile-menu-button"
               >
-                <Menu size={22} />
+                <Menu size={20} />
               </button>
             </SheetTrigger>
-            <SheetContent side="right" className="bg-[var(--navy)] border-[var(--border)] w-[85%] sm:w-[300px] p-0">
+            <SheetContent side="right" className="bg-[var(--navy)] border-[var(--border)] w-[80%] sm:w-[300px] p-0">
               <nav style={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -156,7 +165,7 @@ const Header = () => {
                     key={index} 
                     href={item.href}
                     style={{
-                      fontSize: '1.125rem',
+                      fontSize: '1rem',
                       color: 'var(--slate-light)',
                       display: 'flex',
                       alignItems: 'center',

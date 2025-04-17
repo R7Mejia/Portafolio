@@ -1,3 +1,4 @@
+
 /* Media queries for responsiveness */
 
 @media (min-width: 768px) {
@@ -12,11 +13,16 @@
 
 @media (max-width: 767px) {
   .container {
-    padding: 0 1.5rem;
+    padding: 0 1rem;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
   }
   
   .section {
-    padding: 3rem 0;
+    padding: 2.5rem 0;
+    width: 100%;
+    overflow-x: hidden;
   }
   
   .hero {
@@ -26,22 +32,22 @@
   }
   
   h1 {
-    font-size: clamp(2rem, 8vw, 2.5rem) !important;
+    font-size: clamp(1.75rem, 8vw, 2.5rem) !important;
   }
   
   p {
-    font-size: 0.95rem !important;
+    font-size: 0.9rem !important;
   }
   
   .button-primary {
     display: inline-flex;
     justify-content: center;
-    padding: 0.6rem 1rem;
-    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
   }
   
   .card {
-    padding: 1.25rem;
+    padding: 1rem;
   }
   
   .project-card {
@@ -49,13 +55,14 @@
   }
   
   .section-heading {
-    font-size: 1.75rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+    text-align: center;
   }
   
-  /* Add more breathing room between elements */
+  /* Adjust spacing for better mobile experience */
   .space-y-4 > * + * {
-    margin-top: 0.75rem;
+    margin-top: 0.5rem;
   }
   
   /* Make images responsive */
@@ -65,18 +72,50 @@
   }
 }
 
+/* Additional styles for very small screens */
+@media (max-width: 375px) {
+  .container {
+    padding: 0 0.75rem;
+  }
+  
+  .button-primary {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+  }
+  
+  .reveal {
+    padding: 0.75rem !important;
+  }
+}
+
 /* Improved mobile sheet styling */
 @media (max-width: 767px) {
   /* Adjust sheet styling for better mobile experience */
   .mobile-menu-nav {
-    gap: 0.75rem !important;
+    gap: 0.5rem !important;
   }
   
   .mobile-menu-nav a {
-    font-size: 1rem !important;
+    font-size: 0.9rem !important;
     padding: 0.5rem 0;
     width: 100%;
     text-align: center;
+  }
+  
+  /* Fix for mobile menu visibility */
+  .mobile-menu-button {
+    display: flex !important;
+    position: relative;
+    z-index: 10;
+  }
+  
+  /* Skills section specific mobile styling */
+  #skills .reveal {
+    margin-bottom: 0.75rem;
+  }
+  
+  #skills .bg-navy-light {
+    padding: 0.75rem;
   }
 }
 
@@ -96,13 +135,13 @@
 /* Skills section mobile styles */
 @media (max-width: 767px) {
   .section-heading {
-    font-size: 1.75rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
     text-align: center;
   }
   
   .skill-bar {
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
   }
   
   .reveal {
