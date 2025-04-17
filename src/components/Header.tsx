@@ -140,14 +140,10 @@ const Header = () => {
                   color: 'var(--foreground)',
                   cursor: 'pointer',
                   padding: '0.5rem',
-<<<<<<< HEAD
-                  marginRight: '1.5rem' // Move it a bit to the left
-=======
                   marginLeft: 'auto',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center'
->>>>>>> f766ae40d906dd4d98367084703b693a8f46029b
                 }}
                 className="mobile-menu-button"
               >
