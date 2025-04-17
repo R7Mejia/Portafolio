@@ -1,3 +1,4 @@
+
 /* Media queries for responsiveness */
 
 @media (min-width: 768px) {
@@ -105,8 +106,8 @@
   .mobile-menu-button {
     display: flex !important;
     position: absolute !important;
-    right: 0.5rem !important;
-    z-index: 10 !important;
+    right: 1rem !important;
+    z-index: 50 !important;
   }
   
   /* Skills section specific mobile styling */
