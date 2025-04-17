@@ -140,15 +140,6 @@ const Header = () => {
                   color: 'var(--foreground)',
                   cursor: 'pointer',
                   padding: '0.5rem',
-                  marginLeft: 'auto',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                  position: 'absolute', // Change to absolute positioning
-                  right: '0.5rem', // Align to the right side of the container
-                  top: '50%', // Center vertically
-                  transform: 'translateY(-50%)', // Ensure vertical centering
-                  zIndex: 10 // Ensure it's above other elements
                   position: 'absolute',
                   right: '0.5rem',
                   top: '50%',
@@ -171,9 +162,8 @@ const Header = () => {
                 gap: '1rem'
               }} className="mobile-menu-nav">
                 {navItems.map((item, index) => (
-                  <a 
-                    key={index} 
-                    href={item.href}
+                  <button 
+                    key={index}
                     style={{
                       fontSize: '1rem',
                       color: 'var(--slate-light)',
@@ -183,17 +173,17 @@ const Header = () => {
                       padding: '0.5rem 0',
                       width: '100%',
                       justifyContent: 'center',
-                      borderBottom: index !== navItems.length - 1 ? '1px solid var(--navy-lighter)' : 'none'
+                      borderBottom: index !== navItems.length - 1 ? '1px solid var(--navy-lighter)' : 'none',
+                      background: 'transparent',
+                      border: 'none',
+                      cursor: 'pointer'
                     }}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick(item.href);
-                    }}
+                    onClick={() => handleNavClick(item.href)}
                   >
                     <span style={{ color: 'var(--highlight)', fontFamily: 'JetBrains Mono, monospace' }}>
                       {`0${index + 1}.`}
                     </span> {item.label}
-                  </a>
+                  </button>
                 ))}
                 {resumeButton}
               </nav>
