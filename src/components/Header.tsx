@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from 'react';
 import { Menu, X, Code, Upload } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
@@ -139,10 +140,11 @@ const Header = () => {
                   color: 'var(--foreground)',
                   cursor: 'pointer',
                   padding: '0.5rem',
-                  marginLeft: 'auto', // This ensures the button is pushed to the right side
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
+                  position: 'absolute', // Change to absolute positioning
+                  right: '0.5rem', // Align to the right side of the container
+                  top: '50%', // Center vertically
+                  transform: 'translateY(-50%)', // Ensure vertical centering
+                  zIndex: 10 // Ensure it's above other elements
                 }}
                 className="mobile-menu-button"
               >
@@ -196,3 +198,4 @@ const Header = () => {
 };
 
 export default Header;
+
