@@ -23,6 +23,16 @@ const projects = [
     featured: true,
   },
   {
+    title: "Project III",
+    description:
+      "A web application showcasing your ability to implement complex features and APIs. Describe the technical challenges you overcame and the impact of your solution.",
+    technologies: ["TypeScript", "Next.js"],
+    image: "./assets/imagenes/haloj.jpeg", // Updated image path
+    github: "#",
+    live: "#",
+    featured: true,
+  },
+  {
     title: "Another Project",
     description:
       "A web application showcasing your ability to implement complex features and APIs. Describe the technical challenges you overcame and the impact of your solution.",
