@@ -1,8 +1,10 @@
+
 import { useState, useEffect, useRef } from 'react';
 import { Menu, X, Code, Upload } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useToast } from "@/components/ui/use-toast";
+import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 
 const navItems = [
   { label: 'Home', href: '#home' },
@@ -85,6 +87,39 @@ const Header = () => {
     </button>
   );
 
+  // Mobile Navigation component using Drawer instead of Sheet
+  const MobileNav = () => (
+    <Drawer open={isOpen} onOpenChange={setIsOpen}>
+      <DrawerTrigger asChild>
+        <button 
+          className="bg-transparent border-none cursor-pointer flex items-center justify-center p-2"
+          aria-label="Menu"
+        >
+          <Menu size={24} />
+        </button>
+      </DrawerTrigger>
+      <DrawerContent className="bg-[var(--navy)] border-t-[var(--border)] p-6">
+        <div className="w-full max-w-md mx-auto">
+          <nav className="flex flex-col gap-4">
+            {navItems.map((item, index) => (
+              <button
+                key={index}
+                className="flex items-center gap-2 px-4 py-3 text-left text-lg text-[var(--slate-light)] hover:text-[var(--highlight)] transition-colors"
+                onClick={() => handleNavClick(item.href)}
+              >
+                <span className="font-mono text-[var(--highlight)]">{`0${index + 1}.`}</span>
+                {item.label}
+              </button>
+            ))}
+            <div className="mt-4">
+              {resumeButton}
+            </div>
+          </nav>
+        </div>
+      </DrawerContent>
+    </Drawer>
+  );
+
   return (
     <header className={isScrolled ? 'scrolled' : ''}>
       <div className="container">
@@ -128,31 +163,10 @@ const Header = () => {
             {resumeButton}
           </nav>
 
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild>
-              <button 
-                className="mobile-menu-button"
-                aria-label="Menu"
-              >
-                <Menu size={24} />
-              </button>
-            </SheetTrigger>
-            <SheetContent className="w-[80vw] bg-[var(--navy)] border-[var(--border)]">
-              <nav className="flex flex-col gap-4 pt-8">
-                {navItems.map((item, index) => (
-                  <button
-                    key={index}
-                    className="flex items-center gap-2 px-4 py-2 text-left text-lg text-[var(--slate-light)] hover:text-[var(--highlight)] transition-colors"
-                    onClick={() => handleNavClick(item.href)}
-                  >
-                    <span className="font-mono text-[var(--highlight)]">{`0${index + 1}.`}</span>
-                    {item.label}
-                  </button>
-                ))}
-                {resumeButton}
-              </nav>
-            </SheetContent>
-          </Sheet>
+          <div className="block md:hidden">
+            <MobileNav />
+          </div>
+          
           {fileInput}
         </div>
       </div>
