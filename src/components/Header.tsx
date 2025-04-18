@@ -331,7 +331,7 @@ const Header = () => {
             fontFamily: 'JetBrains Mono, monospace',
             fontWeight: 'bold',
             fontSize: isMobile ? '1rem' : '1.25rem',
-            color: 'var(--foreground)',
+            color: 'var(--transparent)',
             display: 'flex',
             alignItems: 'center'
           }}>
