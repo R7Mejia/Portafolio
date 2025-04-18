@@ -137,7 +137,7 @@ const Header = () => {
                 style={{ 
                   background: 'none',
                   border: 'none',
-                  color: 'var(--foreground)',
+                  color: 'var(--trasnparent)',
                   cursor: 'pointer',
                   padding: '0.5rem',
                   position: 'absolute',
