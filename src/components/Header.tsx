@@ -319,13 +319,14 @@ const Header = () => {
   return (
     <header className={isScrolled ? 'scrolled' : ''}>
       <div className="container">
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: isMobile ? '0.75rem 0.5rem' : '1rem 0',
-          width: '100%'
-        }}>
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: isMobile ? '0.75rem 0.5rem' : '1rem 0',
+        width: '100%',
+        marginLeft: isMobile ? '-0.5rem' : '-1rem' // Adjusting the menu to move slightly to the left
+      }}>
           <a href="#home" style={{
             fontFamily: 'JetBrains Mono, monospace',
             fontWeight: 'bold',
