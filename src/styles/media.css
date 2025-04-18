@@ -70,6 +70,18 @@
     max-width: 100%;
     height: auto;
   }
+  
+  /* Mobile menu styling */
+  button[aria-label="Menu"] {
+    display: block !important;
+    color: var(--foreground);
+    z-index: 50;
+  }
+  
+  .mobile-menu-nav button {
+    width: 100%;
+    text-align: left;
+  }
 }
 
 /* Additional styles for very small screens */
@@ -88,26 +100,12 @@
   }
 }
 
-/* Improved mobile sheet styling */
+/* Improved mobile drawer styling */
 @media (max-width: 767px) {
-  /* Adjust sheet styling for better mobile experience */
-  .mobile-menu-nav {
-    gap: 0.5rem !important;
-  }
-  
-  .mobile-menu-nav a {
-    font-size: 0.9rem !important;
-    padding: 0.5rem 0;
-    width: 100%;
-    text-align: center;
-  }
-  
   /* Fix for mobile menu visibility */
-  .mobile-menu-button {
+  button[aria-label="Menu"] {
     display: flex !important;
-    position: absolute !important;
-    right: 1rem !important;
-    z-index: 50 !important;
+    color: var(--foreground);
   }
   
   /* Skills section specific mobile styling */

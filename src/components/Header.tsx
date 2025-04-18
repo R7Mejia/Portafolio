@@ -4,6 +4,7 @@ import { Menu, X, Code, Upload } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useToast } from "@/components/ui/use-toast";
+import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 
 const navItems = [
   { label: 'Home', href: '#home' },
@@ -36,16 +37,17 @@ const Header = () => {
   }, []);
 
   const handleNavClick = (href: string) => {
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
-    setIsOpen(false); // Close mobile menu after clicking
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setIsOpen(false);
+    }
   };
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
       if (file.type === 'application/pdf') {
-        // Here you would typically handle the file upload
-        // For now, we'll just show a success message
         toast({
           title: "Resume uploaded successfully!",
           description: `File name: ${file.name}`,
@@ -64,7 +66,6 @@ const Header = () => {
     fileInputRef.current?.click();
   };
 
-  // Hidden file input
   const fileInput = (
     <input
       type="file"
@@ -84,6 +85,39 @@ const Header = () => {
       <Upload size={16} />
       Upload Resumè
     </button>
+  );
+
+  // Mobile Navigation component using Drawer instead of Sheet
+  const MobileNav = () => (
+    <Drawer open={isOpen} onOpenChange={setIsOpen}>
+      <DrawerTrigger asChild>
+        <button 
+          className="bg-transparent border-none cursor-pointer flex items-center justify-center p-2"
+          aria-label="Menu"
+        >
+          <Menu size={24} />
+        </button>
+      </DrawerTrigger>
+      <DrawerContent className="bg-[var(--navy)] border-t-[var(--border)] p-6">
+        <div className="w-full max-w-md mx-auto">
+          <nav className="flex flex-col gap-4">
+            {navItems.map((item, index) => (
+              <button
+                key={index}
+                className="flex items-center gap-2 px-4 py-3 text-left text-lg text-[var(--slate-light)] hover:text-[var(--highlight)] transition-colors"
+                onClick={() => handleNavClick(item.href)}
+              >
+                <span className="font-mono text-[var(--highlight)]">{`0${index + 1}.`}</span>
+                {item.label}
+              </button>
+            ))}
+            <div className="mt-4">
+              {resumeButton}
+            </div>
+          </nav>
+        </div>
+      </DrawerContent>
+    </Drawer>
   );
 
   return (
@@ -110,7 +144,6 @@ const Header = () => {
             <span style={{ color: 'var(--highlight)', marginLeft: '3px' }}>{'>'}</span>
           </a>
           
-          {/* Desktop Navigation */}
           <nav style={{ display: 'none', alignItems: 'center', gap: '2rem' }} className="desktop-nav">
             {navItems.map((item, index) => (
               <a 
@@ -130,65 +163,10 @@ const Header = () => {
             {resumeButton}
           </nav>
 
-          {/* Mobile Menu Button */}
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild>
-              <button 
-                style={{ 
-                  background: 'none',
-                  border: 'none',
-                  color: 'var(--trasnparent)',
-                  cursor: 'pointer',
-                  padding: '0.5rem',
-                  position: 'absolute',
-                  right: '0.5rem',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  zIndex: 10
-                }}
-                className="mobile-menu-button"
-              >
-                <Menu size={20} />
-              </button>
-            </SheetTrigger>
-            <SheetContent side="right" className="bg-[var(--navy)] border-[var(--border)] w-[80%] sm:w-[300px] p-0">
-              <nav style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '100%',
-                padding: '1.5rem',
-                gap: '1rem'
-              }} className="mobile-menu-nav">
-                {navItems.map((item, index) => (
-                  <button 
-                    key={index}
-                    style={{
-                      fontSize: '1rem',
-                      color: 'var(--slate-light)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.5rem',
-                      padding: '0.5rem 0',
-                      width: '100%',
-                      justifyContent: 'center',
-                      borderBottom: index !== navItems.length - 1 ? '1px solid var(--navy-lighter)' : 'none',
-                      background: 'transparent',
-                      border: 'none',
-                      cursor: 'pointer'
-                    }}
-                    onClick={() => handleNavClick(item.href)}
-                  >
-                    <span style={{ color: 'var(--highlight)', fontFamily: 'JetBrains Mono, monospace' }}>
-                      {`0${index + 1}.`}
-                    </span> {item.label}
-                  </button>
-                ))}
-                {resumeButton}
-              </nav>
-            </SheetContent>
-          </Sheet>
+          <div className="block md:hidden">
+            <MobileNav />
+          </div>
+          
           {fileInput}
         </div>
       </div>
